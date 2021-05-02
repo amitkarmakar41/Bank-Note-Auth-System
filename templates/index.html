@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title> Home </title>
+{% endblock %}
+
+
+{% block body %}
+<main role="main">
+    <br>
+    <div>
+        <div class="bg-light p-5 rounded">
+            <div class="col-sm-8 mx-auto">
+                <h1 class="text-center"> Bank Note Authentication App </h1>
+                <p class="text-center">Please FIll Up the Following Fields to Check your Note</p>
+                <br>
+
+                <form action='/predict' method='POST'>
+                    <label for="Variance"> Variance </label>
+                    <input class="form-control" type="text" name='Variance' id='Variance' placeholder="Example: 3.16"
+                        aria-label="Example: 3.16">
+                    <br>
+                    <label for="Skewness">Skewness </label>
+                    <input class="form-control" type="text" name='Skewness' id='Skewness' placeholder="Example: 8.66"
+                        aria-label="Example: 8.66">
+                    <br>
+                    <label for="Curtosis">Curtosis </label>
+                    <input class="form-control" type="text" name='Curtosis' id='Curtosis' placeholder="Example: -2.80"
+                        aria-label="Example: -2.80">
+                    <br>
+                    <label for="Entropy">Entropy </label>
+                    <input class="form-control" type="text" name='Entropy' id='Entropy' placeholder="Example: -0.44"
+                        aria-label="Example: -0.44">
+                    <br>
+                    <input class="btn btn-success" type='submit' value='Detect'>
+                </form>
+                <br>
+                {% if result==1 %}
+                <h3 class="text-center" style="color:green"> Authentic Note!!!</h3>
+                {% elif result==0 %}
+                <h3 class="text-center" style="color:red"> Fake Note !!!</h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+{% endblock %}
